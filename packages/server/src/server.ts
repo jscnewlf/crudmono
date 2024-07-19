@@ -10,6 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRoutes);
 
+app.get('/api', function (req, res) {
+  console.log('requisição')
+  res.send('Requisição!')
+})
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

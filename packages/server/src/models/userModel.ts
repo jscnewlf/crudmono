@@ -1,3 +1,6 @@
+import * as fs from 'fs';
+import * as path from 'path';
+
 interface User {
     id: number;
     name?: string;
@@ -7,6 +10,7 @@ interface User {
 
 export class UserModel {
     private static AUTH_KEY = 'authenticatedUser';
+    private usersFilePath = path.join(__dirname, 'users.json');
     private users: { [username: string]: User } = {};
     private nextId: number = 1;
 
@@ -15,12 +19,12 @@ export class UserModel {
     }
 
     private saveUsers() {
-        localStorage.setItem('users', JSON.stringify(this.users));
+        fs.writeFileSync(this.usersFilePath, JSON.stringify(this.users));
     }
 
     private loadUsers() {
-        const users = localStorage.getItem('users');
-        if (users) {
+        if (fs.existsSync(this.usersFilePath)) {
+            const users = fs.readFileSync(this.usersFilePath, 'utf8');
             this.users = JSON.parse(users);
             const ids = Object.values(this.users).map(user => user.id);
             this.nextId = Math.max(...ids, 0) + 1;
@@ -28,16 +32,21 @@ export class UserModel {
     }
 
     private saveAuthenticatedUser(username: string) {
-        localStorage.setItem(UserModel.AUTH_KEY, username);
+        fs.writeFileSync(UserModel.AUTH_KEY, username);
     }
 
     private removeAuthenticatedUser() {
-        localStorage.removeItem(UserModel.AUTH_KEY);
+        if (fs.existsSync(UserModel.AUTH_KEY)) {
+            fs.unlinkSync(UserModel.AUTH_KEY);
+        }
     }
 
     private getAuthenticatedUser() {
-        const username = localStorage.getItem(UserModel.AUTH_KEY);
-        return username ? this.users[username] : null;
+        if (fs.existsSync(UserModel.AUTH_KEY)) {
+            const username = fs.readFileSync(UserModel.AUTH_KEY, 'utf8');
+            return this.users[username] || null;
+        }
+        return null;
     }
 
     register(name: string, username: string, password: string) {
