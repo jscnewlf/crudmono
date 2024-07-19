@@ -10,7 +10,7 @@ interface User {
 
 export class UserModel {
     private static AUTH_KEY = 'authenticatedUser';
-    private usersFilePath = path.join(__dirname, 'users.json');
+    private usersFilePath = path.join(__dirname, '../data', 'users.json');
     private users: { [username: string]: User } = {};
     private nextId: number = 1;
 
