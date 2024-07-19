@@ -1,0 +1,58 @@
+# Node.js
+node_modules/
+*.log
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Build outputs
+dist/
+build/
+out/
+
+# Expo
+.expo/
+.expo-shared/
+*.expo*
+*.log
+
+# React
+*.env
+*.env.local
+*.env.development
+*.env.production
+*.env.test
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Yarn
+yarn.lock
+
+# Packages
+packages/**/node_modules/
+
+# Other
+*.DS_Store
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Secrets
+.env
