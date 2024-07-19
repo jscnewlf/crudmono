@@ -32,11 +32,7 @@ export const register = (req: Request, res: Response) => {
     }
 };
 
-export const getAuthenticatedUser = (req: Request, res: Response) => {
-    try {
-        const user = userModel.getAuthenticatedUserInfo();
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(401).json({ error: (error as Error).message });
-    }
+export const getAuthenticatedUser = () => {
+    const user = userModel.getAuthenticatedUserInfo();
+    return user;
 };
