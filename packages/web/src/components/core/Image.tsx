@@ -4,18 +4,18 @@ interface ImageProps {
   src: string;
   alt: string;
   className?: string;
-  style?: React.CSSProperties;
   width?: string | number;
   height?: string | number;
 }
 
-const Image: React.FC<ImageProps> = ({ src, alt, className, style, width, height }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, className, width, height }) => {
   return (
     <img
       src={src}
       alt={alt}
+      width={width}
+      height={height}
       className={className}
-      style={{ ...style, width, height }}
     />
   );
 };

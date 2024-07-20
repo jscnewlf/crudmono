@@ -1,55 +1,41 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import Button from '../components/core/Button';
-import FormGroup from '../components/core/FormGroup';
-import Input from '../components/core/Input';
-
+import RegisterForm from '../components/authForm/RegisterForm';
+import Modal from '../components/core/Modal';
+import Image from '../components/core/Image';
 const Register: React.FC = () => {
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalType, setModalType] = useState<'success' | 'error'>('success');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSuccess = (message: string) => {
+    setModalMessage(message);
+    setModalType('success');
+    setIsModalOpen(true);
+    setError(null);
+  };
 
-    try {
-      const response = await axios.post('http://localhost:3001/api/auth/register', {
-        name,
-        username,
-        password
-      });
-
-      setMessage(response.data.message);
-      setError(null);
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        setError(err.response?.data.error || 'Erro desconhecido');
-      } else {
-        setError('Erro desconhecido');
-      }
-      setMessage(null);
-    }
+  const handleError = (error: string) => {
+    setModalMessage(error);
+    setModalType('error');
+    setIsModalOpen(true);
+    setMessage(null);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded shadow">
-        <h2 className="text-2xl font-bold mb-6">Register</h2>
-        {error && <div className="text-red-500 mb-4">{error}</div>}
-        {message && <div className="text-green-500 mb-4">{message}</div>}
-        <FormGroup label="Name">
-          <Input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-        </FormGroup>
-        <FormGroup label="Username">
-          <Input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </FormGroup>
-        <FormGroup label="Password">
-          <Input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </FormGroup>
-        <Button className="w-full" type="submit">Register</Button>
-      </form>
+    <div className='bg-triangle-pattern customized-bg'>
+    {/* <Image src={'/svg/human-creative.svg'} alt={'s'} /> */}
+      <div className="flex items-center justify-center h-screen max-w-screen-lg mx-auto customized-bg2">
+       {/* <Image className='drop-shadow-md' src={'/svg/human-creative.svg'} alt={'s'} width={'500'} height={'500'} /> */}
+        <RegisterForm onSuccess={handleSuccess} onError={handleError} />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          message={modalMessage}
+          type={modalType}
+        />
+      </div>
     </div>
   );
 };

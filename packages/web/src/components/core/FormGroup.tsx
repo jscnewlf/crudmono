@@ -8,8 +8,8 @@ interface FormGroupProps {
 
 const FormGroup: React.FC<FormGroupProps> = ({ label, children, className }) => {
   return (
-    <div className={`mb-4 ${className}`}>
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className={`mb-6 ${className}`}>
+      <label className="block text-xs font-bold font-sans text-darkblue-600">{label}</label>
       {children}
     </div>
   );
