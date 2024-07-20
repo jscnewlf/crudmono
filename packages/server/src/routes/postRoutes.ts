@@ -1,7 +1,7 @@
-import { Router } from 'express';
+import express from 'express';
 import { createPost, updatePost, removePost, getPost, getUserPosts } from '../controllers/postController';
 
-const router = Router();
+const router = express.Router();
 
 router.post('/create', createPost);
 router.put('/update/:id', updatePost);
