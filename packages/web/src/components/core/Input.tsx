@@ -7,6 +7,7 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   className?: string;
+  maxLength?: number;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -15,11 +16,13 @@ const Input: React.FC<InputProps> = ({
   value,
   onChange,
   placeholder,
-  className
+  className,
+  maxLength
 }) => {
   return (
     <input
       type={type}
+      maxLength={maxLength}
       name={name}
       value={value}
       onChange={onChange}

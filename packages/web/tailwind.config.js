@@ -10,6 +10,15 @@ module.exports = {
       dropShadow: {
         'md': '5px 5px 10px #2d6e71',
       },
+      screens: {
+        'xl': {'max': '1279px'},
+  
+        'lg': {'max': '1080px'},
+  
+        'md': {'max': '760px'},
+  
+        'sm': {'max': '639px'},
+      },
       colors: {
         "darkblue": {
           "100": "#81a8a5",

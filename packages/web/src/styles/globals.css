@@ -6,7 +6,7 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-
+/*BG Animated PG Register*/
 .customized-bg::before {
     content: '';
     display: block;
@@ -55,80 +55,117 @@
   }
   
   @keyframes position {
-    0% {
-      background-position: 
-        calc(var(--p) *  1) calc(var(--p) *  0), 
-        calc(var(--p) * -1) calc(var(--p) *  1), 
-        calc(var(--p) *  1) calc(var(--p) * -1), 
-        calc(var(--p) * -1) calc(var(--p) *  0);
-    }
-    25% {
-      background-position: 
-        calc(var(--p) *  1) calc(var(--p) *  4), 
-        calc(var(--p) * -1) calc(var(--p) *  5), 
-        calc(var(--p) *  1) calc(var(--p) *  3), 
-        calc(var(--p) * -1) calc(var(--p) *  4);
-    }
-    50% {
-      background-position: 
-        calc(var(--p) *  3) calc(var(--p) * 8), 
-        calc(var(--p) * -3) calc(var(--p) * 9), 
-        calc(var(--p) *  2) calc(var(--p) * 7), 
-        calc(var(--p) * -2) calc(var(--p) * 8);
-    }
-    75% {
-      background-position: 
-        calc(var(--p) *  3) calc(var(--p) * 12), 
-        calc(var(--p) * -3) calc(var(--p) * 13), 
-        calc(var(--p) *  2) calc(var(--p) * 11), 
-        calc(var(--p) * -2) calc(var(--p) * 12);
-    }
-    100% {    
-      background-position: 
-        calc(var(--p) *  5) calc(var(--p) * 16), 
-        calc(var(--p) * -5) calc(var(--p) * 17), 
-        calc(var(--p) *  5) calc(var(--p) * 15), 
-        calc(var(--p) * -5) calc(var(--p) * 16);
-    }
+  0% {
+    background-position: 
+      calc(var(--p) *  1) calc(var(--p) *  0), 
+      calc(var(--p) * -1) calc(var(--p) *  1), 
+      calc(var(--p) *  1) calc(var(--p) * -1), 
+      calc(var(--p) * -1) calc(var(--p) *  0);
   }
+  25% {
+    background-position: 
+      calc(var(--p) *  1) calc(var(--p) *  4), 
+      calc(var(--p) * -1) calc(var(--p) *  5), 
+      calc(var(--p) *  1) calc(var(--p) *  3), 
+      calc(var(--p) * -1) calc(var(--p) *  4);
+  }
+  50% {
+    background-position: 
+      calc(var(--p) *  3) calc(var(--p) * 8), 
+      calc(var(--p) * -3) calc(var(--p) * 9), 
+      calc(var(--p) *  2) calc(var(--p) * 7), 
+      calc(var(--p) * -2) calc(var(--p) * 8);
+  }
+  75% {
+    background-position: 
+      calc(var(--p) *  3) calc(var(--p) * 12), 
+      calc(var(--p) * -3) calc(var(--p) * 13), 
+      calc(var(--p) *  2) calc(var(--p) * 11), 
+      calc(var(--p) * -2) calc(var(--p) * 12);
+  }
+  100% {    
+    background-position: 
+      calc(var(--p) *  5) calc(var(--p) * 16), 
+      calc(var(--p) * -5) calc(var(--p) * 17), 
+      calc(var(--p) *  5) calc(var(--p) * 15), 
+      calc(var(--p) * -5) calc(var(--p) * 16);
+  }
+}
   
-  @media (prefers-reduced-motion) {
-    .customized-bg::before {
-      animation: none;
-    }
+@media (prefers-reduced-motion) {
+  .customized-bg::before {
+    animation: none;
   }
-  .customized-bg2::before {
-    content: '';
-    display: block;
-    height: 800px;
-    width: 800px;
-    border-radius: 50%;
-    position: fixed;
-    top: 27%;
-    left: -216px;
-    transform-origin: center;
+}
+.customized-bg2::before {
+  content: '';
+  display: block;
+  height: 800px;
+  width: 800px;
+  border-radius: 50%;
+  position: fixed;
+  top: 27%;
+  left: -216px;
+  transform-origin: center;
+  transform: scale(10);
+    backdrop-filter:blur(0.2px);
+  animation: scaleDown 2s ease-out forwards;
+  animation-delay: 1s;
+  box-shadow: 400px -40px 0px 0px #2a819594, -10px -400px 0px 0px #000929ba, 20px 0px 0px 2000px #befcff;
+}
+  
+@keyframes scaleDown {
+  0% {
+    backdrop-filter:blur(0.2px);
     transform: scale(10);
-     backdrop-filter:blur(0.2px);
-    animation: scaleDown 2s ease-out forwards;
-    animation-delay: 1s;
-    box-shadow: 400px -40px 0px 0px #2a819594, -10px -400px 0px 0px #000929ba, 20px 0px 0px 2000px #befcff;
   }
-  
-  
-  
-  
-  @keyframes scaleDown {
+  50% {
+    backdrop-filter:blur(0.2px);
+    transform: scale(5);
+  }
+  100% {
+    backdrop-filter:blur(0);
+    transform: scale(1);
+  }
+}
+@media (max-width: 639px) {
+  .customized-bg2::before {
+    height: 400px;
+    width: 400px;
+    box-shadow: 300px -80px 0px 0px #2a819594, -50px -300px 0px 0px #000929ba, 190px 220px 0px 100px #358FA4, 20px 0px 0px 2000px #befcff;
+    left: -100px;
+    top: 50vh;
+    transform: scale(1);
+    animation: scaleDownMob 2s ease-out forwards;
+  }
+  @keyframes scaleDownMob {
     0% {
-      backdrop-filter:blur(0.2px);
-      transform: scale(10);
-    }
-    50% {
-      backdrop-filter:blur(0.2px);
-      transform: scale(5);
+      height: 800px;
+    width: 800px;
+    transform: scale(1);
     }
     100% {
-      backdrop-filter:blur(0);
+      height: 400px;
+      width: 400px;
+      box-shadow: 280px -400px 0px 0px #2a819594, -50px -300px 0px 0px #000929ba, 190px 10px 0px 100px #358FA4, 220px 100px 0px 570px #befcff;
+      left: -100px;
+      top: 75vh;
       transform: scale(1);
     }
   }
-  
+  .customized-bg::before {
+    --s: 15vmin;
+    animation: 
+    color var(--d) var(--e) infinite,
+    position var(--d) var(--e) infinite,
+    scaleDownMobGraph 2s ease-out forwards;
+  }
+  @keyframes scaleDownMobGraph {
+    0% {
+      --s: 15vmin;
+    }
+    100% {
+      --s: 25vmin;
+    }
+  }
+}
