@@ -7,16 +7,17 @@ import Input from '../core/Input';
 interface RegisterFormProps {
   onSuccess: (message: string) => void;
   onError: (error: string) => void;
+  onLoading: (loading: boolean) => void;
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess, onError }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess, onError, onLoading  }) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    onLoading(true);
     try {
       const response = await axios.post('http://localhost:3001/api/auth/register', {
         name,
@@ -31,6 +32,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess, onError }) => {
       } else {
         onError('Erro desconhecido');
       }
+    } finally {
+      onLoading(false);
     }
   };
 
