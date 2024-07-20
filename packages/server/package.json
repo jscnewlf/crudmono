@@ -8,6 +8,8 @@
     "dev": "ts-node src/server.ts"
   },
   "dependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2"
   },

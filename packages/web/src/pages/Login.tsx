@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RegisterForm from '../components/authForm/RegisterForm';
+import LoginForm from '../components/authForm/LoginForm';
 import Modal from '../components/core/Modal';
 import Loading from '../components/core/Loading';
-const Register: React.FC = () => {
+const Login: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,14 +32,14 @@ const Register: React.FC = () => {
   const handleModalClose = () => {
     setIsModalOpen(false);
     if (modalType === 'success') {
-      navigate('/login');
+      navigate('/me');
     }
   };
   return (
     <div className='bg-triangle-pattern customized-bg'>
       <div className="flex items-center justify-center h-screen max-w-screen-lg mx-auto customized-bg2">
        {/* <Image className='drop-shadow-md' src={'/svg/human-creative.svg'} alt={'s'} width={'500'} height={'500'} /> */}
-        <RegisterForm onSuccess={handleSuccess} onError={handleError} onLoading={handleLoading} />
+        <LoginForm onSuccess={handleSuccess} onError={handleError} onLoading={handleLoading} />
         {isLoading && <Loading />}
         <Modal
           isOpen={isModalOpen}
@@ -52,4 +52,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default Login;
