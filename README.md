@@ -19,12 +19,16 @@ crudmono
 │   ├── web [Responsável pelo FrontEnd Web]
 │   │   ├── public
 │   │   ├── src
-│   │   │   ├── pages/
+│   │   │   ├── actions/
 │   │   │   ├── components/
+│   │   │   ├── pages/
+│   │   │   ├── reducers/
+│   │   │   ├── store/
 │   │   │   ├── styles/
 │   │   │   ├── axiosConfig.ts [Autenticação]
 │   │   │   ├── App.tsx
 │   │   │   └── index.tsx
+│   │   │   └── hooks.ts
 │   │   └── package.json
 │   └── mobile
 │       ├── src
@@ -39,7 +43,7 @@ crudmono
 
 **Server**: Node.js, Express, Cors, TypeScript, Cookie-Parser, Nodemon
 
-**Web**: React.js, TypeScript, Tailwind CSS, Axios
+**Web**: React.js, TypeScript, Tailwind CSS, Axios, Redux
 
 **Mobile**: React Native, Expo
 
