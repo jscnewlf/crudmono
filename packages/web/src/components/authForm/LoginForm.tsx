@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Button from '../core/Button';
 import FormGroup from '../core/FormGroup';
 import Input from '../core/Input';
@@ -86,6 +87,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onError, onLoading }) 
         />
       </FormGroup>
       <Button className="w-full rounded-lg mx-auto py-2 bg-softblue-600 text-white font-sans font-semibold uppercase hover:opacity-80" type="submit">Login</Button>
+
+      <div className="mt-4 text-center">
+        <p className="text-sm text-gray-600">
+          <span>Dont have an account? </span>
+          <Link to="/register" className="text-blue-500 hover:underline">Register</Link>
+        </p>
+      </div>
     </form>
   );
 };
