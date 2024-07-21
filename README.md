@@ -65,19 +65,19 @@ Entre no diretório do projeto
   cd crudmono
 ```
 
-Instale as dependências na pasta raíz, /server e /web
+Instale as dependências na pasta raíz
 
 ```bash
   yarn install
 ```
 
-Inicie o server
+Inicie o /server
 
 ```bash
   yarn dev
 ```
 
-Inicie o frontEnd
+Inicie o /web
 
 ```bash
   yarn start
