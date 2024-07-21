@@ -3,6 +3,11 @@
 
 Este projeto é uma aplicação front-end construída com uma estrutura de monorepo usando Yarn Workspaces. A aplicação inclui três pacotes principais: server, web, e mobile.
 
+## Demonstração
+- Mobile
+<img src="\screenshot\mobile.gif">
+
+
 
 ## Estrutura do Projeto
 ```
@@ -69,7 +74,7 @@ Entre no diretório do projeto
 Instale as dependências na pasta raíz
 
 ```bash
-  yarn install
+  yarn install || npm install
 ```
 
 Inicie o /server
@@ -112,3 +117,8 @@ http://localhost:3000/feed/post_[idDoPost]
 - **Criação de Comentário**: Permite que o usuário adicione comentários a um post.
 - **Edição de Comentário**: Permite que o usuário edite comentário de um post.
 - **Exclusão de Comentário**: Permite que o usuário exclue comentário de um post.
+
+## Demonstração
+- Desktop
+<img src="\screenshot\desk2.gif">
+<img src="\screenshot\desk3.gif">
