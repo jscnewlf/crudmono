@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col">
             {shouldShowHeader && (
-                <header className="bg-darkblue-800 text-white p-4 flex justify-between items-center">
+                <header className="z-10 absolute w-full bg-darkblue-800 text-white p-4 flex justify-between items-center">
                     <div className="flex space-x-4">
                         <Link
                             to="/me"

@@ -128,6 +128,9 @@
     transform: scale(1);
   }
 }
+.small-animated::before {
+  --s: 4vmin;
+}
 @media (max-width: 639px) {
   .customized-bg2::before {
     height: 400px;
