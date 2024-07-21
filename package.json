@@ -3,13 +3,15 @@
     "private": true,
     "version": "1.0.0",
     "workspaces": [
-      "packages/server",
-      "packages/web",
-      "packages/mobile"
+        "packages/server",
+        "packages/web",
+        "packages/mobile"
     ],
     "scripts": {
-      "start": "yarn workspaces run start",
-      "build": "yarn workspaces run build"
+        "start": "yarn workspaces run start",
+        "build": "yarn workspaces run build"
+    },
+    "dependencies": {
+        "yarn": "^1.22.22"
     }
-  }
-  
+}
