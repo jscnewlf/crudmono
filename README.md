@@ -52,6 +52,7 @@ crudmono
 
 
 ## Rodando localmente
+- Versão Node recomendada: 21.2v
 
 Clone o projeto
 
