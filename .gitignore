@@ -56,3 +56,5 @@ packages/**/node_modules/
 
 # Secrets
 .env
+
+/packages/server/src/data/*
