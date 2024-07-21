@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col">
             {shouldShowHeader && (
-                <header className="z-10 absolute w-full bg-darkblue-800 text-white p-4 flex justify-between items-center">
+                <header className="z-10 fixed w-full bg-darkblue-800 text-white p-4 flex justify-between items-center">
                     <div className="flex space-x-4">
                         <Link
                             to="/me"
@@ -52,7 +52,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     </button>
                 </header>
             )}
-            <main className="flex-1">
+            <main className={`flex-1 ${shouldShowHeader && ('mt-32')}`}>
                 {children}
             </main>
         </div>

@@ -1,6 +1,6 @@
 // App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../src/store';
 import Register from './pages/Register';
@@ -21,6 +21,7 @@ const App: React.FC = () => {
                         <Route path="/me" element={<Me />} />
                         <Route path="/feed" element={<Feed />} />
                         <Route path="/feed/post/:idDoPost" element={<PostPage />} />
+                        <Route index element={ <Navigate to="/login" /> } />
                     </Routes>
                 </Layout>
             </Router>

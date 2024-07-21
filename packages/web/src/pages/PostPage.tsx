@@ -101,11 +101,11 @@ const PostPage: React.FC = () => {
   return (
     <div>
       <div className='customized-bg before:h-6 before:top-16 before:shadow-md before:z-[2] small-animated'></div>
-      <div className="flex items-center justify-center h-screen relative z-1 flex-col w-full sm:w-11/12">
+      <div className="flex items-center justify-start h-screen relative z-1 flex-col w-full sm:w-11/12 sm:mx-auto">
         {post ? (
           <div className="bg-white shadow-md rounded-lg p-6">
             <h2 className="text-3xl font-bold mb-4 text-darkblue-800">{post.title}</h2>
-            <p className="mb-6 text-grayish-800">{post.content}</p>
+            <p className="mb-6 text-grayish-800 max-w-md">{post.content}</p>
 
             <div className="mt-20 border-t-2 border-grayish-200 pt-4 max-w-md">
               <h2 className="text-sm font-semibold mb-2 text-darkblue-400">Comentários</h2>
