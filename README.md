@@ -5,7 +5,7 @@ Este projeto é uma aplicação front-end construída com uma estrutura de monor
 
 ## Demonstração
 - Mobile
-<img src="\screenshot\mobile.gif">
+<img src="\screenshot\mobile.gif" width="300">
 
 
 
