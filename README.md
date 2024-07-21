@@ -59,29 +59,29 @@ crudmono
 ## Rodando localmente
 - Versão Node recomendada: 21.2v
 
-Clone o projeto
+#### Clone o projeto
 
 ```bash
   git clone https://github.com/jscnewlf/crudmono
 ```
 
-Entre no diretório do projeto
+#### Entre no diretório do projeto
 
 ```bash
   cd crudmono
 ```
 
-Instale as dependências na pasta raíz
+#### Instale as dependências na pasta raíz
 - Yarn
 ```bash
-  yarn install npm install
+  yarn install
 ```
 - NPM
 ```bash
    npm install
 ```
 
-Inicie o /server
+#### Inicie o /server
 - Yarn
 ```bash
   yarn dev
@@ -91,7 +91,7 @@ Inicie o /server
    npm run dev
 ```
 
-Inicie o /web
+#### Inicie o /web
 - Yarn
 ```bash
   yarn start
