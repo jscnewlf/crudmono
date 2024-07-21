@@ -72,23 +72,34 @@ Entre no diretório do projeto
 ```
 
 Instale as dependências na pasta raíz
-
+- Yarn
 ```bash
-  yarn install || npm install
+  yarn install npm install
+```
+- NPM
+```bash
+   npm install
 ```
 
 Inicie o /server
-
+- Yarn
 ```bash
   yarn dev
 ```
+- NPM
+```bash
+   npm run dev
+```
 
 Inicie o /web
-
+- Yarn
 ```bash
   yarn start
 ```
-
+- NPM
+```bash
+   npm start
+```
 
 ## Funcionalidades
 
