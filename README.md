@@ -70,35 +70,39 @@ crudmono
 ```bash
   cd crudmono
 ```
-
-#### Instale as dependências na pasta raíz
 - Yarn
+#### Instale as dependências na pasta raíz
+
 ```bash
   yarn install
 ```
-- NPM
-```bash
-   npm install
-```
 
 #### Inicie o /server
-- Yarn
 ```bash
   yarn dev
 ```
-- NPM
+
+#### Inicie o /web
 ```bash
-   npm run dev
+  yarn start
+```
+
+- npm
+#### Instale as dependências na pasta raíz
+
+```bash
+  npm i
+```
+
+#### Inicie o /server
+```bash
+  npm run dev
 ```
 
 #### Inicie o /web
 - Yarn
 ```bash
-  yarn start
-```
-- NPM
-```bash
-   npm start
+  npm start
 ```
 
 ## Funcionalidades
