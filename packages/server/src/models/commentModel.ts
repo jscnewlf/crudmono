@@ -1,71 +1,91 @@
+// commentModel.ts
+import * as fs from 'fs';
+import * as path from 'path';
+
 interface Comment {
     id: number;
-    postId: number;
-    userId: number;
+    user_id: number;
     content: string;
 }
 
+interface Post {
+    id: number;
+    user_id: number;
+    title: string;
+    content: string;
+    comments: Comment[];
+}
+
+interface PostCollection {
+    posts: Post[];
+}
+
 export class CommentModel {
-    private static COMMENTS_KEY = 'comments';
-    private comments: Comment[] = [];
-    private nextId: number = 1;
+    private postsFilePath = path.join(__dirname, '../data', 'posts.json');
+    private posts: PostCollection = { posts: [] };
+    private nextCommentId: number = 1;
 
     constructor() {
-        this.loadComments();
+        this.loadPosts();
     }
 
-    private saveComments() {
-        localStorage.setItem(CommentModel.COMMENTS_KEY, JSON.stringify(this.comments));
+    private savePosts() {
+        fs.writeFileSync(this.postsFilePath, JSON.stringify(this.posts));
     }
 
-    private loadComments() {
-        const comments = localStorage.getItem(CommentModel.COMMENTS_KEY);
-        if (comments) {
-            this.comments = JSON.parse(comments);
-            const ids = this.comments.map(comment => comment.id);
-            this.nextId = Math.max(...ids, 0) + 1;
+    private loadPosts() {
+        if (fs.existsSync(this.postsFilePath)) {
+            const postsData = fs.readFileSync(this.postsFilePath, 'utf8');
+            this.posts = postsData ? JSON.parse(postsData) : { posts: [] };
+            // Atualize nextCommentId
+            const commentIds = this.posts.posts.flatMap(post => post.comments.map(comment => comment.id));
+            this.nextCommentId = Math.max(...commentIds, 0) + 1;
         }
     }
 
-    createComment(postId: number, content: string, userId: number) {
-        if (!postId || !content || !userId) {
-            throw new Error('Dados invalidos');
+    addComment(postId: number, userId: number, content: string) {
+        const post = this.posts.posts.find(post => post.id === postId);
+        if (!post) {
+            throw new Error('Post não encontrado');
         }
-
         const newComment: Comment = {
-            id: this.nextId++,
-            postId,
-            userId,
+            id: this.nextCommentId++,
+            user_id: userId,
             content
         };
-        this.comments.push(newComment);
-        this.saveComments();
-        return { message: 'Comentario adicionado', comment: newComment };
+        post.comments.push(newComment);
+        this.savePosts();
+        return newComment;
     }
 
-    updateComment(id: number, content: string, userId: number) {
-        const comment = this.comments.find(c => c.id === id && c.userId === userId);
+    updateComment(postId: number, commentId: number, content: string) {
+        const post = this.posts.posts.find(post => post.id === postId);
+        if (!post) {
+            throw new Error('Post não encontrado');
+        }
+        const comment = post.comments.find(comment => comment.id === commentId);
         if (!comment) {
-            throw new Error('Comentario não encontrado ou não autorizado');
+            throw new Error('Comentário não encontrado');
         }
-
         comment.content = content;
-        this.saveComments();
-        return { message: 'Comentario atualizado', comment };
+        this.savePosts();
+        return comment;
     }
 
-    removeComment(id: number, userId: number) {
-        const index = this.comments.findIndex(c => c.id === id && c.userId === userId);
-        if (index === -1) {
-            throw new Error('Comentario não encontrado ou não autorizado');
+    removeComment(postId: number, commentId: number) {
+        const post = this.posts.posts.find(post => post.id === postId);
+        if (!post) {
+            throw new Error('Post não encontrado');
         }
-
-        const [removedComment] = this.comments.splice(index, 1);
-        this.saveComments();
-        return { message: 'Comentario removido', comment: removedComment };
+        post.comments = post.comments.filter(comment => comment.id !== commentId);
+        this.savePosts();
     }
 
-    getCommentsByPost(postId: number, userId: number) {
-        return this.comments.filter(c => c.postId === postId && c.userId === userId);
+    getCommentsByPost(postId: number) {
+        const post = this.posts.posts.find(post => post.id === postId);
+        if (!post) {
+            throw new Error('Post não encontrado');
+        }
+        return post.comments;
     }
 }

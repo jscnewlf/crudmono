@@ -1,16 +1,18 @@
-import { Router } from 'express';
-import {
-    createComment,
-    updateComment,
-    removeComment,
-    getCommentsByPost
-} from '../controllers/commentController';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import { createComment, updateComment, removeComment, getCommentsByPost } from '../controllers/commentController';
 
-const router = Router();
+const router = express.Router();
 
-router.post('/comments/create', createComment);
-router.put('/comments/update/:id', updateComment);
-router.delete('/comments/remove/:id', removeComment);
-router.get('/comments/:postId', getCommentsByPost);
+router.use(cookieParser());
+
+router.post('/create', createComment);
+router.put('/update/:postId/:commentId', updateComment); 
+router.delete('/remove/:postId/:commentId', removeComment);
+router.get('/:postId', getCommentsByPost);
+
+router.use((req, res) => {
+    res.status(404).json({ error: 'Rota não existe' });
+});
 
 export default router;
